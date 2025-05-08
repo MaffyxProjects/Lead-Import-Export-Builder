@@ -49,10 +49,10 @@ The tool runs entirely in the user's browser, ensuring data privacy as no inform
 
 ### File Structure
 
-*   `e:\Google Drive\Generated Ideas\Lauren\Exit Leads Import Builder\index.html`: The main HTML file that the user opens in their browser.
-*   `e:\Google Drive\Generated Ideas\Lauren\Exit Leads Import Builder\style.css`: Contains all the styling rules for the application.
-*   `e:\Google Drive\Generated Ideas\Lauren\Exit Leads Import Builder\script.js`: The core JavaScript file driving the tool's functionality.
-*   `e:\Google Drive\Generated Ideas\Lauren\Exit Leads Import Builder\papaparse.min.js`: The minified PapaParse library.
+*   `index.html`: The main HTML file that the user opens in their browser.
+*   `style.css`: Contains all the styling rules for the application.
+*   `script.js`: The core JavaScript file driving the tool's functionality.
+*   `papaparse.min.js`: The minified PapaParse library.
 
 ### Client-Side Operation
 
@@ -61,6 +61,8 @@ All processing happens within the user's web browser. When data is pasted or a f
 ## 3. Functionality Details
 
 ### Section 1: Generate Contact CSV from Pasted Data
+
+![Section 1](https://github.com/MaffyxProjects/Lead-Import-Export-Builder/blob/main/Screenshot%202025-05-08%20151638.png?raw=true)
 
 This section allows users to paste tab-separated data (typically copied from Google Sheets) and convert it into a standardized Contact CSV.
 
@@ -108,6 +110,8 @@ This section allows users to paste tab-separated data (typically copied from Goo
 *   **Validation:** For Earned Exits, either phone or email must be present. For Quan Cao, phone must be present and look like a phone number (contains digits, hyphens, parentheses, spaces, dots, and not multiple consecutive letters).
 
 ### Section 2: Generate Opportunity CSV from Uploaded File
+
+![Section 2](https://github.com/MaffyxProjects/Lead-Import-Export-Builder/blob/main/Screenshot%202025-05-08%20151643.png?raw=true)
 
 This section creates an Opportunity CSV based on an existing CSV file provided by the user.
 
