@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Generator Tool - vFinal-BlankHandled</title> <!-- Updated version -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- === LOAD LOCAL PAPAPARSE === -->
+    <script src="papaparse.min.js"></script>
+    <!-- ============================ -->
+
+</head>
+<body>
+
+    <header>
+        <h1>Contact & Opportunity CSV Generator</h1>
+        <p class="intro">This tool helps format data copied from Google Sheets or uploaded via CSV into specific CSV templates ready for import.</p>
+    </header>
+
+    <main>
+        <!-- Section 1: Paste Data -->
+        <section class="card">
+            <h2>1. Generate Contact CSV from Pasted Data</h2>
+            <p>Use this section if you have contact data copied directly from a Google Sheet.</p>
+            <ol class="instructions">
+                <li>Ensure your Google Sheet data matches the expected columns for the chosen source below.</li>
+                <li>Select and copy the relevant rows and columns from your Google Sheet (it should copy as tab-separated data).</li>
+                <li>Paste the copied data into the <strong>correct textarea</strong> below (Earned Exits or Quan Cao).</li>
+                <li>Click the corresponding "Generate & Download" button.</li>
+            </ol>
+
+             <div class="source-section">
+                <h3>Source: Earned Exits</h3>
+                <p class="source-instructions">
+                    Paste data here if the source is "Earned Exits". The tool expects the following input columns: <br>
+                    <code>D</code>: Full Name | <code>G</code>: Business Name | <code>I</code>: Phone | <code>J</code>: Email
+                </p>
+                <textarea id="pasteDataEarnedExits" rows="8" placeholder="Paste Earned Exits data here... (Tab-separated)"></textarea>
+                <button id="generateCsvEarnedExits">Generate Earned Exits Contact CSV</button>
+                <p id="statusEarnedExits" class="status-message"></p>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="source-section">
+                <h3>Source: Quan Cao</h3>
+                 <p class="source-instructions">
+                    Paste data here if the source is "Quan Cao". The tool expects the following input columns: <br>
+                    <code>G</code>: Phone | <code>J</code>: Business Name | <code>K</code>: Full Name
+                 </p>
+                <textarea id="pasteDataQuanCao" rows="8" placeholder="Paste Quan Cao data here... (Tab-separated)"></textarea>
+                <button id="generateCsvQuanCao">Generate Quan Cao Contact CSV</button>
+                <p id="statusQuanCao" class="status-message"></p>
+            </div>
+            <p class="output-note"><em>Output file format: Phone, Email, First Name, Last Name, Business Name, Source. The filename will include the source and date.</em></p>
+        </section>
+
+        <!-- Section 2: Upload CSV -->
+        <section class="card">
+            <h2>2. Generate Opportunity CSV from Uploaded File</h2>
+            <p>Use this section to create an Opportunity CSV based on an existing CSV file containing contact IDs and business names.</p>
+             <ol class="instructions">
+                <li>Select the desired "Seller Referral Source" (Earned Exits or Quan Cao) using the radio buttons below. This will be added to every row in the output file.</li>
+                <li>Click "Choose File" and select a CSV file from your computer.</li>
+                <li>The uploaded CSV <strong>must</strong> contain columns named <code>Contact Id</code> and <code>Business Name</code> (case-insensitive).</li>
+                <li>Click the "Generate & Download Opportunity CSV" button.</li>
+            </ol>
+
+            <div class="radio-group">
+                <label>Select Seller Referral Source for Output:</label>
+                <div>
+                    <input type="radio" id="sourceEarnedExits" name="sourceOption" value="Earned Exits" checked>
+                    <label for="sourceEarnedExits">Earned Exits</label>
+                </div>
+                <div>
+                    <input type="radio" id="sourceQuanCao" name="sourceOption" value="Quan Cao">
+                    <label for="sourceQuanCao">Quan Cao</label>
+                </div>
+            </div>
+
+            <input type="file" id="csvFileInput" accept=".csv,text/csv,application/vnd.ms-excel">
+            <button id="generateCsv2">Generate Opportunity CSV</button>
+            <p id="status2" class="status-message"></p>
+            <p class="output-note"><em>Output file format: opportunity name, Contact ID, Pipeline, Stage, Lead Value, Seller Referral Source, Opportunity Owner, status. Static values will be filled in. The filename will include the selected source and date.</em></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 CSV Generator Tool. Runs entirely in your browser - no data is sent to any server.</p>
+    </footer>
+
+    <!-- === LOAD YOUR SCRIPT AT THE VERY END === -->
+    <script src="script.js"></script>
+    <!-- ===================================== -->
+
+</body>
+</html>
